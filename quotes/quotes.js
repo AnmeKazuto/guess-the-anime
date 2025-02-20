@@ -1,10 +1,13 @@
 
-
+let guesstoggle = document.getElementByID("guess");
+let daycnt = document.getElementById("daysContainer");
 let imageContainer = document.getElementsByClassName("charimage");
 let image = document.getElementById("charimage");
 let Quote = document.getElementById("quote");
 let charinput = document.getElementById("charinput");
 let guesslives = document.getElementById("lives");
+let button;
+let prevbtn = document.getElementById("prevbtn")
 let DailyQuote = [
     {
         daily: 0 ,
@@ -91,10 +94,31 @@ function Daily(){
 Daily();
 
 function PreviousDays(){
+    daycnt.style.display = "grid";
     for ( i in DailyQuote){
+        
         console.log(i);
-        document.createElement("button")
+        button = document.createElement("button")
+        button.innerHTML = i;
+        button.value = i;
+        daycnt.appendChild(button)
+        console.log(button.value)
+        
     }
+    daycnt.style.display = "grid";
+    guesstoggle.style.display = "none";
 
 }
 PreviousDays()
+
+button.addEventListener("click",changeDays);
+function changeDays(){
+    
+    daycnt.style.display = "none";
+    day = button.value
+    daycnt.style.display = "none";
+    guesstoggle.style.display = "block"
+    console.log("hellooooo")
+    console.log(day)
+
+}

@@ -1,3 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+header{
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+    
+}
 #charimage{
     width: 100px;
+}
+.prevDays{
+    text-align: center;
+}
+#daysContainer{
+    display: grid;
+    border: 1px solid black;
+    width: 500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: blue;
+    grid-template-rows: max-content;
+    
+    
+
+}
+#daysContainer button{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    margin: 5px;
+    font-size: large;
+
+}
+#daysContainer button:hover{
+    background-color: black;
+    color: white;
 }
