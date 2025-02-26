@@ -86,6 +86,7 @@ function PreviousDays() {
 function changeDays(selectedDay) {
     day = selectedDay;
     lives = 3;
+
     updateUI();
     daycnt.style.display = "none";
     guesstoggle.style.display = "inline-block";
