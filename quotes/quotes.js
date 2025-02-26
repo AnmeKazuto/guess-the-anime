@@ -18,13 +18,13 @@ let DailyQuote = [
     {
         daily:1,
         quote:"The first game, second game, the playoffs, the nationals... I'm going to win them all.",
-        characterimg:"/resources/kageyama-kaikyuu.pdf",
+        characterimg:"/resources/Haikyuu-Kageyama-Karasuno-.avif",
         answer: "kageyama"     
     },
 
 ]
 /* makes everything work*/
-let day = 0
+let day = 0;
 let lives = 3;
 guesslives.innerHTML = lives;
 let answer = DailyQuote[day].answer;
@@ -84,6 +84,7 @@ function Daily(){
     Quote.innerHTML = dailyQ; 
     //image (image not showing)
     image.src = dailyI;
+    
 
 
     
@@ -100,27 +101,41 @@ function PreviousDays(){
     
     
     
-        for ( i in DailyQuote){
+        for (i in DailyQuote){
             
-            console.log(i);
+            console.log(i)
             button
             button.innerHTML = i;
             button.value = i;
             daycnt.appendChild(button)
             
             
+            
+            
         }
         daycnt.style.background = "blue";
         daycnt.style.display = "grid";
         guesstoggle.style.display = "none";
-        console.log(i)
+        
     
         daycnt.style.display = "inline-block";
         
 
         
+        button.addEventListener("click", changeDays);
         
-     
+        function changeDays(){
+            
+            daycnt.style.display = "none";
+            day = button.value
+            guesstoggle.style.display = "inline-block"
+            console.log("hellooooo")
+            console.log(day)
+
+            
+
+        }
+            
         
     
 
@@ -138,6 +153,7 @@ function changeDays(){
     guesstoggle.style.display = "inline-block"
     console.log("hellooooo")
     console.log(day)
+
     
 
 }
