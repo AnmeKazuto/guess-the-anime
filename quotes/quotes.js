@@ -1,4 +1,3 @@
-
 let guesstoggle = document.getElementById("guess");
 let daycnt = document.getElementById("daysContainer");
 let imageContainer = document.getElementsByClassName("charimage");
@@ -6,149 +5,88 @@ let image = document.getElementById("charimage");
 let Quotetag = document.getElementById("quote");
 let charinput = document.getElementById("charinput");
 let guesslives = document.getElementById("lives");
-let button = document.createElement("button");
-let prevbtn = document.getElementById("prevbtn")
+let prevbtn = document.getElementById("prevbtn");
+
 let DailyQuote = [
     {
-        daily: 0 ,
-        quote:"Anyone who tries to hurt my friends...is gonna pay!",
-        characterimg:"/resources/goku-dragon-ball.jpg" ,
-        answer:"goku"
+        daily: 0,
+        quote: "Anyone who tries to hurt my friends...is gonna pay!",
+        characterimg: "/resources/goku-dragon-ball.jpg",
+        answer: "goku"
     },
     {
-        daily:1,
-        quote:"The first game, second game, the playoffs, the nationals... I'm going to win them all.",
-        characterimg:"/resources/Haikyuu-Kageyama-Karasuno-.avif",
-        answer: "kageyama"     
-    },
+        daily: 1,
+        quote: "The first game, second game, the playoffs, the nationals... I'm going to win them all.",
+        characterimg: "/resources/Haikyuu-Kageyama-Karasuno-.avif",
+        answer: "kageyama"
+    }
+];
 
-]
-/* makes everything work*/
 let day = 0;
 let lives = 3;
-guesslives.innerHTML = lives;
-let answer = DailyQuote[day].answer;
-let dailyQ = DailyQuote[day].quote;
-let dailyI = DailyQuote[day].characterimg;    
 
-/* functions for when the answer is right */
-function correct(){
-
-    let RightAnswer = "That answer is correct!Try previous days!"
-    guesslives.innerHTML = RightAnswer;
-    console.log(charinput.value);
-    console.log(lives);
-}
-/* functions for showing the image */
-
-function ShowImg(){
-    
+function updateUI() {
+    guesslives.innerHTML = lives;
+    Quotetag.innerHTML = DailyQuote[day].quote;
     image.src = DailyQuote[day].characterimg;
-    image.style.display = "inline-block";
-    
+    image.style.display = "none"; // Hide image until correct answer is given
 }
 
+function correct() {
+    guesslives.innerHTML = "That answer is correct! Try previous days!";
+    ShowImg();
+}
 
+function ShowImg() {
+    image.style.display = "inline-block";
+}
 
-function Charguess(){
-//char input doesnt work not getting value from input
-    if(charinput.value == answer){
-        
+function Charguess() {
+    let userAnswer = charinput.value.trim().toLowerCase();
+    if (userAnswer === DailyQuote[day].answer) {
         correct();
-        ShowImg();
-    }
-    
-    if(charinput.value != answer){
+    } else {
         lives -= 1;
         guesslives.innerHTML = lives;
-        console.log(lives);
-        console.log(charinput.value)
-        
 
+        if (lives <= 0) {
+            guesslives.innerHTML = `Game Over! The Answer Is ${DailyQuote[day].answer}`;
+            ShowImg();
+        }
     }
-    
-    
-    
-    if(lives <= 0){
-        
-        let newlives = `Game Over! The Answer Is ${answer}`
-        guesslives.innerHTML = newlives;
-        ShowImg();
-        
-    }
-    
 }
 
-// function for setting the daily quote image and answer
-function Daily(){
-    //quote
-    Quotetag.innerHTML = dailyQ; 
-    //image (image not showing)
-    image.src = dailyI;
-   
-
-    lives = 3
-    guesslives.innerHTML = lives;
-
-
-    
-
-
+// Function for setting the daily quote, image, and answer
+function Daily() {
+    day = 0;
+    lives = 3;
+    updateUI();
 }
 
 Daily();
 
 prevbtn.addEventListener("click", PreviousDays);
 
-function PreviousDays(){
+function PreviousDays() {
+    daycnt.innerHTML = ""; // Clear previous buttons
     daycnt.style.display = "grid";
-    
-    
-    
-        for (i in DailyQuote){
-            
-            console.log(i)
-            button
-            button.innerHTML = i;
-            button.value = i;
-            daycnt.appendChild(button)
-            
-            
-            
-            
-        }
-        daycnt.style.background = "blue";
-        daycnt.style.display = "grid";
-        guesstoggle.style.display = "none";
-        
-    
-        daycnt.style.display = "inline-block";
-        
 
-        
-            
-        
-    
+    DailyQuote.forEach((quote, index) => {
+        let button = document.createElement("button");
+        button.innerHTML = `Day ${index}`;
+        button.value = index;
+        button.addEventListener("click", () => changeDays(index));
+        daycnt.appendChild(button);
+    });
 
+    daycnt.style.background = "blue";
+    guesstoggle.style.display = "none";
 }
 
-
-
-
-button.addEventListener("click", changeDays);
-        
-function changeDays(){
-    console.log(day)
+function changeDays(selectedDay) {
+    day = selectedDay;
+    lives = 3;
+    updateUI();
     daycnt.style.display = "none";
-    day = button.value
-    guesstoggle.style.display = "inline-block"
-    console.log("hellooooo")
-    console.log(Quotetag)
-    console.log(dailyQ)
-    
-    
-
-    
-    
-
+    guesstoggle.style.display = "inline-block";
 }
