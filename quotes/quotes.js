@@ -3,7 +3,7 @@ let guesstoggle = document.getElementById("guess");
 let daycnt = document.getElementById("daysContainer");
 let imageContainer = document.getElementsByClassName("charimage");
 let image = document.getElementById("charimage");
-let Quote = document.getElementById("quote");
+let Quotetag = document.getElementById("quote");
 let charinput = document.getElementById("charinput");
 let guesslives = document.getElementById("lives");
 let button = document.createElement("button");
@@ -52,7 +52,7 @@ function ShowImg(){
 
 function Charguess(){
 //char input doesnt work not getting value from input
-    if(charinput.value = answer){
+    if(charinput.value == answer){
         
         correct();
         ShowImg();
@@ -63,6 +63,7 @@ function Charguess(){
         guesslives.innerHTML = lives;
         console.log(lives);
         console.log(charinput.value)
+        
 
     }
     
@@ -81,10 +82,13 @@ function Charguess(){
 // function for setting the daily quote image and answer
 function Daily(){
     //quote
-    Quote.innerHTML = dailyQ; 
+    Quotetag.innerHTML = dailyQ; 
     //image (image not showing)
     image.src = dailyI;
-    
+   
+
+    lives = 3
+    guesslives.innerHTML = lives;
 
 
     
@@ -122,19 +126,6 @@ function PreviousDays(){
         
 
         
-        button.addEventListener("click", changeDays);
-        
-        function changeDays(){
-            
-            daycnt.style.display = "none";
-            day = button.value
-            guesstoggle.style.display = "inline-block"
-            console.log("hellooooo")
-            console.log(day)
-
-            
-
-        }
             
         
     
@@ -147,13 +138,17 @@ function PreviousDays(){
 button.addEventListener("click", changeDays);
         
 function changeDays(){
-    
+    console.log(day)
     daycnt.style.display = "none";
     day = button.value
     guesstoggle.style.display = "inline-block"
     console.log("hellooooo")
-    console.log(day)
+    console.log(Quotetag)
+    console.log(dailyQ)
+    Daily()
+    
 
+    
     
 
 }
