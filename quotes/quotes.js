@@ -145,7 +145,7 @@ function changeDays(){
     console.log("hellooooo")
     console.log(Quotetag)
     console.log(dailyQ)
-    Daily()
+    
     
 
     
