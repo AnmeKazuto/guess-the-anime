@@ -1,4 +1,6 @@
-
+*{
+    text-align: center;
+}
 
 header{
     margin: 10px;
@@ -6,16 +8,11 @@ header{
     text-align: center;
     
 }
-#guess{
-    text-align: center;
 
-}
 #charimage{
     width: 100px;
 }
-.charguess{
-    text-align: center
-}
+
 .prevDays{
     text-align: center;
 }
