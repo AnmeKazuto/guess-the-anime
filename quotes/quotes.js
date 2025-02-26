@@ -24,7 +24,7 @@ let DailyQuote = [
 
 ]
 /* makes everything work*/
-let day = 0;
+let day = 0
 let lives = 3;
 guesslives.innerHTML = lives;
 let answer = DailyQuote[day].answer;
@@ -52,7 +52,7 @@ function ShowImg(){
 
 function Charguess(){
 //char input doesnt work not getting value from input
-    if(charinput.value == answer){
+    if(charinput.value = answer){
         
         correct();
         ShowImg();
@@ -94,7 +94,7 @@ function Daily(){
 Daily();
 
 prevbtn.addEventListener("click", PreviousDays);
-let prevbtncount = 0;
+
 function PreviousDays(){
     daycnt.style.display = "grid";
     
@@ -107,13 +107,13 @@ function PreviousDays(){
             button.innerHTML = i;
             button.value = i;
             daycnt.appendChild(button)
-            console.log(button.value)
+            
             
         }
         daycnt.style.background = "blue";
         daycnt.style.display = "grid";
         guesstoggle.style.display = "none";
-    
+        console.log(i)
     
         daycnt.style.display = "inline-block";
         
