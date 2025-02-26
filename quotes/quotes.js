@@ -110,11 +110,13 @@ function PreviousDays(){
             console.log(button.value)
             
         }
+        daycnt.style.background = "blue";
         daycnt.style.display = "grid";
         guesstoggle.style.display = "none";
     
     
-        daycnt.style.display = "block";
+        daycnt.style.display = "inline-block";
+        
 
         
         

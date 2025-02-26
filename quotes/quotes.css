@@ -6,20 +6,27 @@ header{
     text-align: center;
     
 }
+#guess{
+    text-align: center;
+
+}
 #charimage{
     width: 100px;
+}
+.charguess{
+    text-align: center
 }
 .prevDays{
     text-align: center;
 }
 #daysContainer{
-    display: grid;
-    border: 1px solid black;
+    display: none;
+    
     width: 500px;
     height: 500px;
     margin-left: auto;
     margin-right: auto;
-    background-color: blue;
+    
     grid-template-rows: max-content;
     
     
@@ -32,6 +39,7 @@ header{
     border: none;
     margin: 5px;
     font-size: large;
+    
 
 }
 #daysContainer button:hover{
